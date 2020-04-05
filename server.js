@@ -38,7 +38,8 @@ app.get("/", (req, res) => {
 // api routes
 require("./app/routes/auth.routes")(app);
 require("./app/routes/user.routes")(app);
-
+require("./app/routes/risque.routes")(app);
+require("./app/routes/familleproduit.routes")(app);
 // set port, listen for requests
 //const PORT = config.PORT;
 const PORT = 3000;
@@ -73,4 +74,3 @@ function initial() {
   
   
 }
-

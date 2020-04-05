@@ -33,7 +33,8 @@ db.compagnie = require("./compagnie.model.js")(sequelize, Sequelize, DataTypes);
 db.client = require("./client.model.js")(sequelize, Sequelize, DataTypes);
 db.particulier = require("./particulier.model.js")(sequelize, Sequelize, DataTypes);
 db.societe = require("./societe.model.js")(sequelize, Sequelize, DataTypes);
-
+db.risque = require("./risque.model.js")(sequelize, Sequelize, DataTypes);
+db.familleproduit = require("./familleproduit.model.js")(sequelize, Sequelize, DataTypes);
 db.apporteur = require("./apporteur.model.js")(sequelize, Sequelize, DataTypes);
 db.apporteurparticulier = require("./apporteurparticulier.model.js")(sequelize, Sequelize, DataTypes);
 db.apporteursociete = require("./apporteursociete.model.js")(sequelize, Sequelize, DataTypes);

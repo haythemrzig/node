@@ -8,6 +8,10 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
           defaultValue: Sequelize.UUIDV4,
           primaryKey: true
         },
+        code: {
+          type: DataTypes.STRING,
+            require : true
+        },
         nom: {
           type: DataTypes.STRING,
             require : true

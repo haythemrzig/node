@@ -4,6 +4,7 @@ const Risque= db.risque;
 exports.createRisque = (req, res) => {
     // Save user to database
     Risque.create({
+      code:req.body.code,
       nom: req.body.nom
    
     })
@@ -31,7 +32,8 @@ exports.findAllRisque = (req, res,next) => {
     const id = req.params.id;
   
   Risque.update(
-      { nom: req.body.nom,
+      {  code:req.body.code,
+         nom: req.body.nom,
        
       },
     {

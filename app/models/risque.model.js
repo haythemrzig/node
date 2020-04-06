@@ -1,4 +1,6 @@
+
 module.exports = (sequelize, Sequelize, DataTypes) => {
+
     const Risque = sequelize.define(
       "risque", // Model name
       {
@@ -8,10 +10,15 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
           defaultValue: Sequelize.UUIDV4,
           primaryKey: true
         },
-        nom: {
+        
+        code: {
           type: DataTypes.STRING,
             require : true
         },
+        nom: {
+          type: DataTypes.STRING,
+            require : true
+        }
       },
       {
         // Options
@@ -22,6 +29,8 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
       }
     );
   
+    
+   
     return Risque;
   };
   

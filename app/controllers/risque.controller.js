@@ -4,6 +4,7 @@ const Risque= db.risque;
 exports.createRisque = (req, res) => {
     // Save user to database
     Risque.create({
+      code:req.body.code,
       nom: req.body.nom
    
     })
@@ -31,30 +32,21 @@ exports.findAllRisque = (req, res,next) => {
     const id = req.params.id;
   
   Risque.update(
-      { nom: req.body.nom,
+      { code:req.body.code,
+        nom: req.body.nom
        
       },
     {
-      where: { id: req.params.id }
-    }).then((risque)=>{
-      if(risque)
-    { res.send({ message: "Risque was updated successfully!" });} 
-    else{
-      res.send({ message: "Risque does not exist!" });
-    }
+      where: { id: id }
+    }).then(()=>{
+      res.send({ message: "Risque was updated successfully!" });
+    
 
     })
      .catch(err=>{
-          res.status(500).send({
-            message: message.err
-          });
+          res.status(500).send({message: message.err});
         })
-   
-     /* .catch(err => {
-        res.status(500).send({
-          message: "Error updating Tutorial with id=" + id
-        });
-      })*/
+  
   };
   exports.deleteRisque=(req,res) => {
    
@@ -67,6 +59,22 @@ exports.findAllRisque = (req, res,next) => {
       .catch(err =>{
       res.status(500).send({ message: err.message });
     })
+  };
+
+  exports.findOneRisque = (req, res,next) => {
+    // const title = req.query.title;
+     //var condition = id ? { id: { [Op.like]: `%${id}%` } } : null;
+   
+       Risque.findOne({
+        where: {
+          id: req.params.id
+        }
+      }).then(risque=>{
+        res.send({nom:risque.nom});
+   //console.log(t);
+     
+   
+       })      
   };
   
  

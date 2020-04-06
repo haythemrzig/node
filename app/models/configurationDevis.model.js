@@ -1,7 +1,7 @@
 
 module.exports = (sequelize, Sequelize, DataTypes) => {
-    const FamilleProduit = sequelize.define(
-      "familleproduit", // Model name
+    const ConfigurationDevis = sequelize.define(
+      "configurationdevis", // Model name
       {
         // Attributes
         id: {
@@ -9,7 +9,7 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
           defaultValue: Sequelize.UUIDV4,
           primaryKey: true
         },
-        nom: {
+        questionnaire: {
           type: DataTypes.STRING
         },
         code: {
@@ -28,6 +28,6 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
       }
     );
 
-    return FamilleProduit;
+    return ConfigurationDevis;
   };
   

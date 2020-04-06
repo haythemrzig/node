@@ -1,7 +1,7 @@
 
 module.exports = (sequelize, Sequelize, DataTypes) => {
-    const FamilleProduit = sequelize.define(
-      "familleproduit", // Model name
+    const Garantie = sequelize.define(
+      "garantie", // Model name
       {
         // Attributes
         id: {
@@ -9,13 +9,20 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
           defaultValue: Sequelize.UUIDV4,
           primaryKey: true
         },
-        nom: {
+        code: {
           type: DataTypes.STRING
         },
-        code: {
-            type: DataTypes.STRING,
-           // unique : true,
-           require : true
+        niveau: {
+          type: DataTypes.STRING
+        },
+        nom: {
+            type: DataTypes.STRING
+          },
+          montantAssure: {
+            type: DataTypes.STRING
+          },
+          montantFranchise: {
+            type: DataTypes.STRING
           },
      
       },
@@ -28,6 +35,6 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
       }
     );
 
-    return FamilleProduit;
+    return Garantie;
   };
   

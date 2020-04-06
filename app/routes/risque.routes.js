@@ -8,9 +8,9 @@ module.exports = function(app) {
   
       next();
     });
-app.post("/api/auth/createRisque", controller.createRisque);
-app.get("/api/auth/getAllRisque", controller.findAllRisque);
-app.delete("/api/auth/deleteRisque/:id", controller.deleteRisque);
-app.put("/api/auth/updateRisque/:id", controller.updateRisque);
-
+app.post("/Risque", controller.createRisque);
+app.get("/Risque", controller.findAllRisque);
+app.delete("/Risque/:id", controller.deleteRisque);
+app.put("/Risque/:id", controller.updateRisque);
+app.get("/Risque/:id",controller.findOneRisque);
 };

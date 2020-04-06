@@ -34,7 +34,27 @@ db.client = require("./client.model.js")(sequelize, Sequelize, DataTypes);
 db.particulier = require("./particulier.model.js")(sequelize, Sequelize, DataTypes);
 db.societe = require("./societe.model.js")(sequelize, Sequelize, DataTypes);
 db.risque = require("./risque.model.js")(sequelize, Sequelize, DataTypes);
+db.garantie = require("./garantie.model.js")(sequelize, Sequelize, DataTypes);
+
+
 db.familleproduit = require("./familleproduit.model.js")(sequelize, Sequelize, DataTypes);
+db.configurationdevis = require("./configurationdevis.model.js")(sequelize, Sequelize, DataTypes);
+
+db.risque.hasMany(db.familleproduit,{
+  onDelete:"cascade"
+});
+db.risque.hasMany(db.configurationdevis,{
+  onDelete:"cascade"
+});
+
+db.familleproduit.hasMany(db.garantie,{
+  onDelete:"cascade"
+});
+db.familleproduit.belongsTo(db.risque);
+db.garantie.belongsTo(db.familleproduit);
+db.configurationdevis.belongsTo(db.risque);
+
+
 db.apporteur = require("./apporteur.model.js")(sequelize, Sequelize, DataTypes);
 db.apporteurparticulier = require("./apporteurparticulier.model.js")(sequelize, Sequelize, DataTypes);
 db.apporteursociete = require("./apporteursociete.model.js")(sequelize, Sequelize, DataTypes);

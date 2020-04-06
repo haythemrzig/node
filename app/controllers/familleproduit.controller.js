@@ -1,27 +1,22 @@
 const jwt = require("jsonwebtoken");
 const db = require("../models");
 const FamilleProduit= db.familleproduit;
-const Risque = db.risque;
+
 exports.createFamilleProduit = (req, res) => {
     // Save user to database
 
-    Risque.findOne({
-        where: {
-          id: req.body.Risqueid
-        }
-      }).then(risque => {
         
-      FamilleProduit.create({
+    FamilleProduit.create({
       
         code:req.body.code,
         nom: req.body.nom,
-        Risqueid:risque.id
+        risqueId:req.body.risque
    
     })
     .then(() => {
         res.send({ message: "Famille Produit was registered successfully!" });
       })
-    })
+   
       .catch(err => {
         res.status(500).send({ message: err.message });
       });
@@ -40,39 +35,26 @@ exports.findAllFamilleProduit = (req, res,next) => {
        })      
   };
   exports.updateFamilleProduit = (req, res) => {
-    Risque.findOne({
-        where: {
-          id: req.body.Risqueid
-        }
-    }).then(risque =>{
-    
-    FamilleProduit.update(
-      { code:req.body.code,
+  
+    FamilleProduit.update({
+       code:req.body.code,
           nom: req.body.nom,
-          Risqueid:risque.id
+          risqueId:req.body.risque
        
       },
     {
       where: { id: req.params.id }
-    }).then((familleproduit)=>{
-      if (familleproduit)
-    { res.send({ message: "Famille Produit was updated successfully!" });} 
-    else{
-      res.send({ message: "Famille Produit does not exist!" });
-    }
+    }).then(()=>{
+    res.send({ message: "Famille Produit was updated successfully!" });
 
     })
      .catch(err=>{
           res.status(500).send({
-            message: message.err
+            message: err.message
           });
         })
-    })
-     /* .catch(err => {
-        res.status(500).send({
-          message: "Error updating Tutorial with id=" + id
-        });
-      })*/
+    
+   
   };
   exports.deleteFamilleProduit=(req,res) => {
    

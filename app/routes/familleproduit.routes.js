@@ -8,9 +8,9 @@ module.exports = function(app) {
   
       next();
     });
-app.post("/api/auth/createFamilleProduit", controller.createFamilleProduit);
-app.get("/api/auth/getAllFamilleProduit", controller.findAllFamilleProduit);
-app.delete("/api/auth/deleteFamilleProduit/:id", controller.deleteFamilleProduit);
-app.put("/api/auth/updateFamilleProduit/:id", controller.updateFamilleProduit);
+app.post("/FamilleProduit", controller.createFamilleProduit);
+app.get("/FamilleProduit", controller.findAllFamilleProduit);
+app.delete("/FamilleProduit/:id", controller.deleteFamilleProduit);
+app.put("/FamilleProduit/:id", controller.updateFamilleProduit);
 
 };

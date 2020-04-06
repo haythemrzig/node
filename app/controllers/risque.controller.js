@@ -32,8 +32,7 @@ exports.findAllRisque = (req, res,next) => {
     const id = req.params.id;
   
   Risque.update(
-      { code:req.body.code,
-        nom: req.body.nom
+      { nom: req.body.nom,
        
       },
     {

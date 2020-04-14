@@ -42,6 +42,8 @@ require("./app/routes/risque.routes")(app);
 require("./app/routes/familleproduit.routes")(app);
 require("./app/routes/garantie.routes")(app);
 require("./app/routes/configurationdevis.routes")(app);
+require("./app/routes/rendez-vous.routes")(app);
+require("./app/routes/devis.routes")(app);
 
 
 // set port, listen for requests

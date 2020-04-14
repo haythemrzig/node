@@ -39,7 +39,28 @@ db.garantie = require("./garantie.model.js")(sequelize, Sequelize, DataTypes);
 
 db.familleproduit = require("./familleproduit.model.js")(sequelize, Sequelize, DataTypes);
 db.configurationdevis = require("./configurationdevis.model.js")(sequelize, Sequelize, DataTypes);
+db.rendezvous = require("./rendezvous.model.js")(sequelize, Sequelize, DataTypes);
+db.voiture = require("./voiture.model.js")(sequelize, Sequelize, DataTypes);
+db.apporteur = require("./apporteur.model.js")(sequelize, Sequelize, DataTypes);
+db.apporteurparticulier = require("./apporteurparticulier.model.js")(sequelize, Sequelize, DataTypes);
+db.apporteursociete = require("./apporteursociete.model.js")(sequelize, Sequelize, DataTypes);
 
+
+db.devis = require("./devis.model.js")(sequelize, Sequelize, DataTypes);
+db.Reponse = require("./reponse.model")(sequelize, Sequelize, DataTypes);
+db.devisGarantie = require("./devisGarantie.model")(sequelize, Sequelize, DataTypes);
+
+db.voiture.hasMany(db.devis,{
+  onDelete:"cascade"
+});
+
+db.compagnie.hasMany(db.devis,{
+  onDelete:"cascade"
+});
+
+db.apporteur.hasMany(db.devis,{
+  onDelete:"cascade"
+});
 db.risque.hasMany(db.familleproduit,{
   onDelete:"cascade"
 });
@@ -47,17 +68,32 @@ db.risque.hasMany(db.configurationdevis,{
   onDelete:"cascade"
 });
 
+db.risque.hasMany(db.devis,{
+  onDelete:"cascade"
+});
 db.familleproduit.hasMany(db.garantie,{
   onDelete:"cascade"
 });
+db.familleproduit.hasMany(db.devis,{
+  onDelete:"cascade"
+});
+db.client.hasMany(db.rendezvous,{
+  onDelete:"cascade"
+});
+db.client.hasMany(db.devis,{
+  onDelete:"cascade"
+});
+db.rendezvous.belongsTo(db.client);
 db.familleproduit.belongsTo(db.risque);
 db.garantie.belongsTo(db.familleproduit);
 db.configurationdevis.belongsTo(db.risque);
+db.devis.belongsTo(db.risque);
+db.devis.belongsTo(db.familleproduit);
+db.devis.belongsTo(db.client);
+db.devis.belongsTo(db.voiture);
+db.devis.belongsTo(db.compagnie);
+db.devis.belongsTo(db.apporteur);
 
-
-db.apporteur = require("./apporteur.model.js")(sequelize, Sequelize, DataTypes);
-db.apporteurparticulier = require("./apporteurparticulier.model.js")(sequelize, Sequelize, DataTypes);
-db.apporteursociete = require("./apporteursociete.model.js")(sequelize, Sequelize, DataTypes);
 
 db.role.belongsToMany(db.user, {
   through: "user_roles",
@@ -69,6 +105,34 @@ db.user.belongsToMany(db.role, {
   foreignKey: "user_id",
   otherKey: "role_id"
 });
+
+db.configurationdevis.belongsToMany(db.devis, {
+  through:db.Reponse,
+  foreignKey: "configurationdevis_id",
+  
+  otherKey: "devis_id",
+});
+db.devis.belongsToMany(db.configurationdevis, {
+  through: db.Reponse,
+  foreignKey: "devis_id",
+  otherKey: "configurationdevis_id"
+});
+
+
+
+
+db.garantie.belongsToMany(db.devis, {
+  through: db.devisGarantie,
+  foreignKey: "garantie_id",
+  otherKey: "devis_id"
+});
+db.devis.belongsToMany(db.garantie, {
+  through: db.devisGarantie,
+  foreignKey: "devis_id",
+  otherKey: "garantie_id"
+});
+
+
 
 db.ROLES = ["utilisateur", "admin", "agence","compagnie"];
 

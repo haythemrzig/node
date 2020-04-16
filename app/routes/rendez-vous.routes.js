@@ -13,5 +13,6 @@ app.get("/rendez-vous", controller.findAll);
 app.delete("/rendez-vous/:id", controller.delete);
 app.put("/rendez-vous/:id", controller.update);
 app.get("/rendez-vous/:id", controller.findOne);
+app.post("/rendez-vous/:id", controller.update);
 
 };

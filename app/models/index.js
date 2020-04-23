@@ -49,6 +49,11 @@ db.apporteursociete = require("./apporteursociete.model.js")(sequelize, Sequeliz
 db.devis = require("./devis.model.js")(sequelize, Sequelize, DataTypes);
 db.Reponse = require("./reponse.model")(sequelize, Sequelize, DataTypes);
 db.devisGarantie = require("./devisGarantie.model")(sequelize, Sequelize, DataTypes);
+db.file = require("./file.model")(sequelize, Sequelize, DataTypes);
+
+db.client.hasMany(db.file,{
+  onDelete:"cascade"
+});
 
 db.voiture.hasMany(db.devis,{
   onDelete:"cascade"
@@ -93,6 +98,7 @@ db.devis.belongsTo(db.client);
 db.devis.belongsTo(db.voiture);
 db.devis.belongsTo(db.compagnie);
 db.devis.belongsTo(db.apporteur);
+db.file.belongsTo(db.client);
 
 
 db.role.belongsToMany(db.user, {

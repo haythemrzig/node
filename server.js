@@ -44,6 +44,7 @@ require("./app/routes/garantie.routes")(app);
 require("./app/routes/configurationdevis.routes")(app);
 require("./app/routes/rendez-vous.routes")(app);
 require("./app/routes/devis.routes")(app);
+require("./app/routes/file.routes")(app);
 
 
 // set port, listen for requests

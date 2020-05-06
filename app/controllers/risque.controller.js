@@ -4,7 +4,7 @@ const Risque= db.risque;
 exports.createRisque = (req, res) => {
     // Save user to database
     Risque.create({
-      code:req.body.code,
+      image:req.body.image,
       nom: req.body.nom
    
     })
@@ -33,7 +33,7 @@ exports.findAllRisque = (req, res,next) => {
   
   Risque.update(
     
-      {code:req.body.code,
+      {image:req.body.image,
          nom: req.body.nom
        
       },

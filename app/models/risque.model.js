@@ -11,7 +11,7 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
           primaryKey: true
         },
         
-        code: {
+        image: {
           type: DataTypes.STRING,
             require : true
         },

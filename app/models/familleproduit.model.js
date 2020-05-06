@@ -12,7 +12,7 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
         nom: {
           type: DataTypes.STRING
         },
-        code: {
+        image: {
             type: DataTypes.STRING,
            // unique : true,
            require : true

@@ -8,7 +8,7 @@ exports.createFamilleProduit = (req, res) => {
         
     FamilleProduit.create({
       
-        code:req.body.code,
+        image:req.body.image,
         nom: req.body.nom,
         risqueId:req.body.risque
    
@@ -37,7 +37,7 @@ exports.findAllFamilleProduit = (req, res,next) => {
   exports.updateFamilleProduit = (req, res) => {
   
     FamilleProduit.update({
-       code:req.body.code,
+       image:req.body.image,
           nom: req.body.nom,
           risqueId:req.body.risque
        

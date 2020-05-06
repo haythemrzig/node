@@ -7,7 +7,6 @@ exports.createGarantie = (req, res) => {
         
     Garantie.create({
 
-        code:req.body.code,
         nom: req.body.nom,
         niveau: req.body.niveau,
         montantAssure: req.body.montantAssure,
@@ -40,7 +39,6 @@ exports.findAllGarantie = (req, res,next) => {
   exports.updateGarantie = (req, res) => {
   
     Garantie.update({
-        code:req.body.code,
         nom: req.body.nom,
         niveau: req.body.niveau,
         montantAssure: req.body.montantAssure,

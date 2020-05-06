@@ -19,12 +19,10 @@ exports.createConfiguration = (req, res) => {
         modele: req.body.modele,
         immatriculation:req.body.immatriculation,
         dateAcquisition: req.body.dateAcquisition,
-        adresse:req.body.adresse,
         marque: req.body.marque,
         trims:req.body.trims,
         carburant: req.body.carburant,
         dateMiseEnCirculation:req.body.dateMiseEnCirculation,
-        codePostal: req.body.codePostal,
     }).then((voiture)=>{
 
 

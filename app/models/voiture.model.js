@@ -19,10 +19,7 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
         },
         dateAcquisition: {
           type: DataTypes.DATE
-        },
-        adresse: {
-          type: DataTypes.STRING
-        },
+        },  
         marque: {
             type: DataTypes.STRING
           },
@@ -34,9 +31,6 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
           },
           dateMiseEnCirculation: {
             type: DataTypes.DATE
-          },
-          codePostal: {
-            type: DataTypes.STRING
           }
       },
       {
